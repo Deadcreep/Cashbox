@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ResultModel
+@using Microsoft.AspNetCore.Http;
+
+<head>
+    <script type="text/javascript">
+        setTimeout('location.replace("@Model.ReturnUrl")', 5000);
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="5; url='@Model.ReturnUrl'">
+    </noscript>
+</head>
+<body>
+    <div>
+        <h2>Оплата совершена.</h2>
+        <a>Автоматический возврат через </a>
+        <a id="timer">5</a>
+        <br />
+        <a href="@Model.ReturnUrl">Вернуться в магазин</a>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function timer() {
+        var obj = document.getElementById('timer');
+        obj.innerHTML--;
+        setTimeout(timer, 1000);
+    }
+    setTimeout(timer, 1000);
+</script>
+
+

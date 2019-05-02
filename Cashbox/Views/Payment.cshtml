@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model OrderModel
+
+<body class="parent">
+    <form class="block" autocomplete="off" method="post" action="/result">
+        <input type="hidden" name="returnUrl" value="@Model.returnUrl" />
+        <input type="hidden" name="orderNum" value="@Model.orderNumber" />
+        <a>Заказ номер @Model.orderNumber </a><br />
+        <a>Сумма заказа : @Model.orderSum</a>
+        <table>          
+            <tr>
+                <td> Введите номер карты</td>
+                <td> <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000"  pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}" name="CardNumber" required /></td>
+            </tr>
+            <tr>
+                <td> Введите CVV</td>
+                <td> <input type="text" placeholder="123" name="Cvv" pattern="[0-9]{3}" required/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Отправить" /> </td>
+            </tr>
+        </table>
+    </form>
+</body>
